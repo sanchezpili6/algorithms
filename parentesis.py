@@ -24,7 +24,8 @@ def parentheses(parentheses_string):
             if parentheses_string[i-1] != OPENING_CHARS[index]:
                 return False
             return parentheses(parentheses_string[:i-1] + parentheses_string[i+1:])
+    return False
 
 
-print(parentheses(VALID_PARENTHESES_STRING))
-print(parentheses(INVALID_PARENTHESES_STRING))
+parentheses_string = input("Escribe un string de paréntesis y/o llaves: ")
+print(parentheses(parentheses_string))
