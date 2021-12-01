@@ -5,107 +5,107 @@ metro = Graph()
 estaciones = {
     'rosario': {
         'name': 'El Rosario',
-        'adjacent': ['instituto_del_petroleo', 'tacuba']
+        'adjacent': [('instituto_del_petroleo', 5), ('tacuba', 3)]
     },
     'instituto_del_petroleo': {
         'name': 'Instituto del Petroleo',
-        'adjacent': ['la_raza', 'deportivo_18']
+        'adjacent': [('la_raza', 1), ('deportivo_18', 1)]
     },
     'deportivo_18': {
         'name': 'Deportivo 18 de Marzo',
-        'adjacent': ['la_raza', 'martin_carrera']
+        'adjacent': [('la_raza', 1), ('martin_carrera', 1)]
     },
     'martin_carrera': {
         'name': 'Martín Carrera',
-        'adjacent': ['consulado']
+        'adjacent': [('consulado', 2)]
     },
     'la_raza': {
         'name': 'La Raza',
-        'adjacent': ['guerrero', 'consulado']
+        'adjacent': [('guerrero', 1), ('consulado', 2)]
     },
     'consulado': {
         'name': 'Consulado',
-        'adjacent': ['morelos', 'oceania']
+        'adjacent': [('morelos', 1), ('oceania', 2)]
     },
     'tacuba': {
         'name': 'Tacuba',
-        'adjacent': ['hidalgo', 'tacubaya']
+        'adjacent': [('hidalgo', 6), ('tacubaya', 4)]
     },
     'guerrero': {
         'name': 'Guerrero',
-        'adjacent': ['garibaldi', 'hidalgo']
+        'adjacent': [('garibaldi', 0), ('hidalgo', 0)]
     },
     'garibaldi': {
         'name': 'Garibaldi',
-        'adjacent': ['bellas_artes', 'morelos']
+        'adjacent': [('bellas_artes', 0), ('morelos', 2)]
     },
     'oceania': {
         'name': 'Oceanía',
-        'adjacent': ['san_lazaro', 'pantitlan']
+        'adjacent': [('san_lazaro', 2), ('pantitlan', 2)]
     },
     'hidalgo': {
         'name': 'Hidalgo',
-        'adjacent': ['bellas_artes', 'balderas']
+        'adjacent': [('bellas_artes', 0), ('balderas', 1)]
     },
     'bellas_artes': {
         'name': 'Bellas Artes',
-        'adjacent': ['salto_del_agua', 'pino_suarez']
+        'adjacent': [('salto_del_agua', 1), ('pino_suarez', 2)]
     },
     'morelos': {
         'name': 'Morelos',
-        'adjacent': ['san_lazaro', 'candelaria']
+        'adjacent': [('san_lazaro', 0), ('candelaria', 0)]
     },
     'balderas': {
         'name': 'Balderas',
-        'adjacent': ['salto_del_agua', 'centro_medico', 'tacubaya']
+        'adjacent': [('salto_del_agua', 0), ('centro_medico', 2), ('tacubaya', 5)]
     },
     'salto_del_agua': {
         'name': 'Salto del Agua',
-        'adjacent': ['pino_suarez', 'chabacano']
+        'adjacent': [('pino_suarez', 1), ('chabacano', 2)]
     },
     'pino_suarez': {
         'name': 'Pino Suarez',
-        'adjacent': ['candelaria', 'chabacano']
+        'adjacent': [('candelaria', 0), ('chabacano', 1)]
     },
     'san_lazaro': {
         'name': 'San Lázaro',
-        'adjacent': ['candelaria', 'pantitlan']
+        'adjacent': [('candelaria', 0), ('pantitlan', 5)]
     },
     'candelaria': {
         'name': 'Candelaria',
-        'adjacent': ['jamaica']
+        'adjacent': [('jamaica', 1)]
     },
     'tacubaya': {
         'name': 'Tacubaya',
-        'adjacent': ['centro_medico', 'mixcoac']
+        'adjacent': [('centro_medico', 2), ('mixcoac', 2)]
     },
     'centro_medico': {
         'name': 'Centro Médico',
-        'adjacent': ['chabacano', 'zapata']
+        'adjacent': [('chabacano', 1), ('zapata', 3)]
     },
     'chabacano': {
         'name': 'Chabacano',
-        'adjacent': ['jamaica', 'santa_anita', 'ermita']
+        'adjacent': [('jamaica', 0), ('santa_anita', 1), ('ermita', 5)]
     },
     'jamaica': {
         'name': 'Jamaica',
-        'adjacent': ['santa_anita', 'pantitlan']
+        'adjacent': [('santa_anita', 0), ('pantitlan', 4)]
     },
     'santa_anita': {
         'name': 'Santa Anita',
-        'adjacent': ['atlalilco']
+        'adjacent': [('atlalilco', 5)]
     },
     'mixcoac': {
         'name': 'Mixcoac',
-        'adjacent': ['zapata']
+        'adjacent': [('zapata', 2)]
     },
     'zapata': {
         'name': 'Zapata',
-        'adjacent': ['ermita']
+        'adjacent': [('ermita', 2)]
     },
     'ermita': {
         'name': 'Ermita',
-        'adjacent': ['atlalilco']
+        'adjacent': [('atlalilco', 1)]
     },
     'atlalilco': {
         'name': 'Atlalilco',
@@ -128,7 +128,7 @@ def add_edges():
     for key, value in estaciones.items():
         if len(value['adjacent']) > 0:
             for station in value['adjacent']:
-                print(f"metro.add_edge({key}, {station})")
+                print(f"metro.add_edge({key}, {station[0]}, {station[1]})")
 
 
 rosario = Vertex('El Rosario')
@@ -187,52 +187,53 @@ atlalilco = Vertex('Atlalilco')
 metro.add_vertex(atlalilco)
 pantitlan = Vertex('Pantitlán')
 metro.add_vertex(pantitlan)
-metro.add_edge(rosario, instituto_del_petroleo)
-metro.add_edge(rosario, tacuba)
-metro.add_edge(instituto_del_petroleo, la_raza)
-metro.add_edge(instituto_del_petroleo, deportivo_18)
-metro.add_edge(deportivo_18, la_raza)
-metro.add_edge(deportivo_18, martin_carrera)
-metro.add_edge(martin_carrera, consulado)
-metro.add_edge(la_raza, guerrero)
-metro.add_edge(la_raza, consulado)
-metro.add_edge(consulado, morelos)
-metro.add_edge(consulado, oceania)
-metro.add_edge(tacuba, hidalgo)
-metro.add_edge(tacuba, tacubaya)
-metro.add_edge(guerrero, garibaldi)
-metro.add_edge(guerrero, hidalgo)
-metro.add_edge(garibaldi, bellas_artes)
-metro.add_edge(garibaldi, morelos)
-metro.add_edge(oceania, san_lazaro)
-metro.add_edge(oceania, pantitlan)
-metro.add_edge(hidalgo, bellas_artes)
-metro.add_edge(hidalgo, balderas)
-metro.add_edge(bellas_artes, salto_del_agua)
-metro.add_edge(bellas_artes, pino_suarez)
-metro.add_edge(morelos, san_lazaro)
-metro.add_edge(morelos, candelaria)
-metro.add_edge(balderas, salto_del_agua)
-metro.add_edge(balderas, centro_medico)
-metro.add_edge(balderas, tacubaya)
-metro.add_edge(salto_del_agua, pino_suarez)
-metro.add_edge(salto_del_agua, chabacano)
-metro.add_edge(pino_suarez, candelaria)
-metro.add_edge(pino_suarez, chabacano)
-metro.add_edge(san_lazaro, candelaria)
-metro.add_edge(san_lazaro, pantitlan)
-metro.add_edge(candelaria, jamaica)
-metro.add_edge(tacubaya, centro_medico)
-metro.add_edge(tacubaya, mixcoac)
-metro.add_edge(centro_medico, chabacano)
-metro.add_edge(centro_medico, zapata)
-metro.add_edge(chabacano, jamaica)
-metro.add_edge(chabacano, santa_anita)
-metro.add_edge(chabacano, ermita)
-metro.add_edge(jamaica, santa_anita)
-metro.add_edge(jamaica, pantitlan)
-metro.add_edge(santa_anita, atlalilco)
-metro.add_edge(mixcoac, zapata)
-metro.add_edge(zapata, ermita)
-metro.add_edge(ermita, atlalilco)
 
+
+metro.add_edge(rosario, instituto_del_petroleo, 5)
+metro.add_edge(rosario, tacuba, 3)
+metro.add_edge(instituto_del_petroleo, la_raza, 1)
+metro.add_edge(instituto_del_petroleo, deportivo_18, 1)
+metro.add_edge(deportivo_18, la_raza, 1)
+metro.add_edge(deportivo_18, martin_carrera, 1)
+metro.add_edge(martin_carrera, consulado, 2)
+metro.add_edge(la_raza, guerrero, 1)
+metro.add_edge(la_raza, consulado, 2)
+metro.add_edge(consulado, morelos, 1)
+metro.add_edge(consulado, oceania, 2)
+metro.add_edge(tacuba, hidalgo, 6)
+metro.add_edge(tacuba, tacubaya, 4)
+metro.add_edge(guerrero, garibaldi, 0)
+metro.add_edge(guerrero, hidalgo, 0)
+metro.add_edge(garibaldi, bellas_artes, 0)
+metro.add_edge(garibaldi, morelos, 2)
+metro.add_edge(oceania, san_lazaro, 2)
+metro.add_edge(oceania, pantitlan, 2)
+metro.add_edge(hidalgo, bellas_artes, 0)
+metro.add_edge(hidalgo, balderas, 1)
+metro.add_edge(bellas_artes, salto_del_agua, 1)
+metro.add_edge(bellas_artes, pino_suarez, 2)
+metro.add_edge(morelos, san_lazaro, 0)
+metro.add_edge(morelos, candelaria, 0)
+metro.add_edge(balderas, salto_del_agua, 0)
+metro.add_edge(balderas, centro_medico, 2)
+metro.add_edge(balderas, tacubaya, 5)
+metro.add_edge(salto_del_agua, pino_suarez, 1)
+metro.add_edge(salto_del_agua, chabacano, 2)
+metro.add_edge(pino_suarez, candelaria, 0)
+metro.add_edge(pino_suarez, chabacano, 1)
+metro.add_edge(san_lazaro, candelaria, 0)
+metro.add_edge(san_lazaro, pantitlan, 5)
+metro.add_edge(candelaria, jamaica, 1)
+metro.add_edge(tacubaya, centro_medico, 2)
+metro.add_edge(tacubaya, mixcoac, 2)
+metro.add_edge(centro_medico, chabacano, 1)
+metro.add_edge(centro_medico, zapata, 3)
+metro.add_edge(chabacano, jamaica, 0)
+metro.add_edge(chabacano, santa_anita, 1)
+metro.add_edge(chabacano, ermita, 5)
+metro.add_edge(jamaica, santa_anita, 0)
+metro.add_edge(jamaica, pantitlan, 4)
+metro.add_edge(santa_anita, atlalilco, 5)
+metro.add_edge(mixcoac, zapata, 2)
+metro.add_edge(zapata, ermita, 2)
+metro.add_edge(ermita, atlalilco, 1)
