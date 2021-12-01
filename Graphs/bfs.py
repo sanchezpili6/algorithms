@@ -28,7 +28,7 @@ metro = {
     'hidalgo': set(['bellas_artes', 'balderas']),
     'bellas_artes': set(['salto_del_agua', 'pino_suarez']),
     'morelos': set(['san_lazaro', 'candelaria']),
-    'balderas': set(['salto_del_agua', 'salto_del_agua', 'tacubaya']),
+    'balderas': set(['salto_del_agua', 'centro_medico', 'tacubaya']),
     'salto_del_agua': set(['pino_suarez', 'chabacano']),
     'pino_suarez': set(['candelaria', 'chabacano']),
     'san_lazaro': set(['candelaria', 'pantitlan']),
