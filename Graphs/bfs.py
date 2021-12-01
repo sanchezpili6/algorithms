@@ -45,4 +45,5 @@ metro = {
     'pantitlan': set([]),
   }
 
-print(bfs(metro, 'rosario', 'pantitlan'))
+for estacion in metro:
+    print(bfs(metro, 'rosario', estacion))
