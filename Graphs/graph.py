@@ -7,11 +7,11 @@ class Graph:
         self.graph_dict = {}
 
     def add_vertex(self, vertex):
-        print('Vertex ' + vertex.value + ' added')
+        # print('Vertex ' + vertex.value + ' added')
         self.graph_dict[vertex.value] = vertex
 
     def add_edge(self, from_vertex, to_vertex, weight=0):
-        print("Adding edge from " + from_vertex.value + " to " + to_vertex.value)
+        # print("Adding edge from " + from_vertex.value + " to " + to_vertex.value)
         self.graph_dict[from_vertex.value].add_edge(to_vertex.value, weight)
         if not self.directed:
             self.graph_dict[to_vertex.value].add_edge(from_vertex.value, weight)
@@ -22,7 +22,7 @@ class Graph:
         while len(start) > 0:
             current_vertex = start.pop(0)
             seen[current_vertex] = True
-            print("Visiting " + current_vertex)
+            # print("Visiting " + current_vertex)
             if current_vertex == end_vertex:
                 return True
             else:

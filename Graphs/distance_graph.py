@@ -237,6 +237,3 @@ metro.add_edge(santa_anita, atlalilco, 5)
 metro.add_edge(mixcoac, zapata, 2)
 metro.add_edge(zapata, ermita, 2)
 metro.add_edge(ermita, atlalilco, 1)
-
-metro.find_path('El Rosario', 'Mixcoac')
-print(metro.find_path('El Rosario', 'Mixcoac'))
